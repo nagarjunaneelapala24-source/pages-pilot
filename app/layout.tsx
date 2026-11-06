@@ -11,9 +11,16 @@ const bricolage = Bricolage_Grotesque({
 })
 
 export const metadata: Metadata = {
-  title: 'Pages Pilot Digital — Build. Engage. Grow.',
+  title: 'Digital Marketing Agency in Tadepalligudem | Pages Pilot Digital',
   description:
-    'Pages Pilot Digital is a social media marketing agency. Monthly posts, reels, stories, content strategy and performance reporting — plans from ₹2,999/month.',
+    'Pages Pilot Digital provides digital marketing, social media marketing, advertisement creation, video advertisement services and business promotion in Tadepalligudem, Andhra Pradesh.',
+  keywords: [
+    'Digital Marketing Agency in Tadepalligudem',
+    'Social Media Marketing in Tadepalligudem',
+    'Advertisement Creation in Tadepalligudem',
+    'Video Advertisement Services in Tadepalligudem',
+    'Business Promotion in Tadepalligudem',
+  ],
   generator: 'v0.app',
   openGraph: {
     title: 'Pages Pilot Digital — Build. Engage. Grow.',

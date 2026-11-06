@@ -1,4 +1,4 @@
-import { ArrowUpRight, Phone } from 'lucide-react'
+import { ArrowUpRight, MapPin, Phone } from 'lucide-react'
 import { contacts, formatPhone, generalMessage, telUrl, whatsappUrl } from '@/lib/site-config'
 import { ContactForm } from './contact-form'
 import { Reveal } from './reveal'
@@ -21,7 +21,12 @@ export function Contact() {
             description="Message us on any of our WhatsApp lines — we usually reply within working hours. Prefer a call? Tap the phone icon."
           />
 
-          <ul className="mt-10 flex flex-col gap-3">
+          <p className="mt-8 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground">
+            <MapPin className="size-4 text-primary" />
+            Tadepalligudem, Andhra Pradesh, India
+          </p>
+
+          <ul className="mt-6 flex flex-col gap-3">
             {contacts.map((contact, i) => (
               <Reveal as="li" key={contact.id} delay={i * 80}>
                 <div className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-3 pr-3.5 transition-all duration-300 hover:border-whatsapp/60 hover:shadow-[0_16px_40px_-20px] hover:shadow-whatsapp/50">

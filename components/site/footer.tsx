@@ -1,4 +1,4 @@
-import { ArrowUp } from 'lucide-react'
+import { ArrowUp, MapPin } from 'lucide-react'
 import { contacts, formatPhone, generalMessage, navLinks, packages, whatsappUrl } from '@/lib/site-config'
 import { EnquiryButton } from './enquiry-button'
 import { Logo } from './logo'
@@ -14,6 +14,10 @@ export function Footer() {
             <Logo inverted />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-foreground/60">
               Social media marketing for businesses that want to show up consistently and grow with clarity.
+            </p>
+            <p className="mt-4 inline-flex items-center gap-2 text-sm text-ink-foreground/75">
+              <MapPin className="size-4 text-accent" />
+              Tadepalligudem, Andhra Pradesh, India
             </p>
           </div>
 

@@ -40,6 +40,8 @@ export function Hero() {
             </span>
           </h1>
 
+          <p className="mt-4 text-sm font-semibold text-primary animate-in fade-in-0 delay-400 duration-700 fill-mode-both">Your local digital growth partner in Tadepalligudem.</p>
+
           <p className="mt-7 max-w-md text-lg leading-relaxed text-muted-foreground animate-in fade-in-0 delay-500 duration-700 fill-mode-both">
             {site.description}
           </p>

@@ -3,7 +3,7 @@ export const site = {
   shortName: 'Pages Pilot',
   tagline: ['BUILD.', 'ENGAGE.', 'GROW.'] as const,
   description:
-    'We plan, create and publish scroll-stopping social content every month — so your brand shows up consistently, connects with the right people and grows with clarity.',
+    'Digital marketing and social media management for businesses in Tadepalligudem and nearby areas — helping your brand show up consistently, connect with the right people and grow with clarity.',
 }
 
 export const navLinks = [

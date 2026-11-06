@@ -42,7 +42,7 @@ export function About() {
                 Your co-pilot for <span className="text-primary">social growth.</span>
               </>
             }
-            description="Pages Pilot Digital is a digital marketing agency helping businesses build a consistent, engaging presence on social media. We handle the planning, creation and publishing — you get a feed that works as hard as you do."
+            description="Pages Pilot Digital is a digital marketing agency serving businesses in Tadepalligudem and nearby areas. We handle the planning, creation and publishing — you get a feed that works as hard as you do."
           />
 
           <ul className="mt-10 flex flex-col gap-3">

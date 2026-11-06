@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ArrowUpRight, Menu, X } from 'lucide-react'
+import { ArrowUpRight, MapPin, Menu, X } from 'lucide-react'
 import { navLinks } from '@/lib/site-config'
 import { cn } from '@/lib/utils'
 import { Logo } from './logo'
@@ -87,6 +87,10 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
+          <span className="hidden items-center gap-1.5 text-xs font-medium text-muted-foreground lg:flex" aria-label="Business location">
+            <MapPin className="size-3.5 text-primary" />
+            Tadepalligudem, Andhra Pradesh
+          </span>
           <button
             type="button"
             onClick={() => openEnquiry()}
