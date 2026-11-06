@@ -25,19 +25,20 @@ type EnquiryDialogProps = {
   open: boolean
   onOpenChange: (open: boolean) => void
   packageId: PackageId | null
+  customMessage?: string | null
 }
 
-export function EnquiryDialog({ open, onOpenChange, packageId }: EnquiryDialogProps) {
+export function EnquiryDialog({ open, onOpenChange, packageId, customMessage }: EnquiryDialogProps) {
   const pkg = getPackage(packageId)
   const [message, setMessage] = useState('')
   const [openedId, setOpenedId] = useState<string | null>(null)
 
   useEffect(() => {
     if (open) {
-      setMessage(pkg ? packageMessage(pkg) : generalMessage)
+      setMessage(customMessage ?? (pkg ? packageMessage(pkg) : generalMessage))
       setOpenedId(null)
     }
-  }, [open, pkg])
+  }, [open, pkg, customMessage])
 
   useEffect(() => {
     if (!openedId) return

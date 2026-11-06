@@ -6,12 +6,13 @@ import { useEnquiry } from './enquiry-provider'
 
 type EnquiryButtonProps = Omit<ComponentProps<'button'>, 'onClick' | 'type'> & {
   packageId?: PackageId
+  enquiryMessage?: string
 }
 
-export function EnquiryButton({ packageId, children, ...props }: EnquiryButtonProps) {
+export function EnquiryButton({ packageId, enquiryMessage, children, ...props }: EnquiryButtonProps) {
   const { openEnquiry } = useEnquiry()
   return (
-    <button type="button" aria-haspopup="dialog" onClick={() => openEnquiry(packageId)} {...props}>
+    <button type="button" aria-haspopup="dialog" onClick={() => openEnquiry(packageId, enquiryMessage)} {...props}>
       {children}
     </button>
   )
