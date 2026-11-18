@@ -25,10 +25,10 @@ const services = [
 ]
 
 const plans = [
-  { id: '01', name: 'Basic Plan', total: '6', reels: '2 Reels', posts: '4 Posts', desc: ['Creative content planning', 'Basic content strategy', 'Platform-ready designs'], accent: 'orange', note: 'A confident place to start.' },
-  { id: '02', name: 'Growth Plan', total: '12', reels: '4 Reels', posts: '8 Posts', desc: ['Creative captions', 'Content planning', 'Promotional content', 'Consistent brand presentation'], accent: 'blue', note: 'Build a consistent rhythm.' },
-  { id: '03', name: 'Premium Plan', total: '16', reels: '6 Reels', posts: '10 Posts', desc: ['Premium creative concepts', 'Promotional content', 'Advanced content planning', 'Brand-focused creatives'], accent: 'navy', note: 'Make every post feel considered.' },
-  { id: '04', name: 'Campaign Plan', total: null, reels: null, posts: null, desc: ['Multiple creative variations', 'Reels and promotional posts', 'Campaign-focused content', 'Different creative hooks', 'Offer and festival promotions'], accent: 'cream', note: 'Content designed for campaign testing.' },
+  { id: '01', name: 'SPARK', total: '6', reels: '2', posts: '4', desc: ['Creative content ideas', 'Basic promotional content', 'Consistent brand presentation'], accent: 'orange', note: 'Creative ideas to start building your digital presence.' },
+  { id: '02', name: 'GROW', total: '12', reels: '4', posts: '8', desc: ['Creative captions', 'Promotional content', 'Product and service highlights', 'Brand engagement content'], accent: 'blue', note: 'Build a recognizable rhythm with content that connects.' },
+  { id: '03', name: 'ELEVATE', total: '16', reels: '6', posts: '10', desc: ['Premium creative concepts', 'Promotional campaigns', 'Brand storytelling', 'Creative visual content'], accent: 'navy', note: 'Thoughtful, elevated creative for your next chapter.' },
+  { id: '04', name: 'DOMINATE', total: null, reels: null, posts: null, desc: ['Multiple ad creative variations', 'Promotional Reels', 'Campaign-focused posts', 'Different creative hooks', 'Special offers and festival campaigns', 'Brand awareness creatives'], accent: 'cream', note: 'Flexible creative built around your campaign goals.' },
 ]
 
 const adServices = [
@@ -77,26 +77,37 @@ function SectionTitle({ kicker, title, intro, light = false }: { kicker: string;
 
 function PlanCard({ plan }: { plan: (typeof plans)[number] }) {
   const isCampaign = plan.total === null
-  return <article className={`group relative flex flex-col overflow-hidden rounded-[1.6rem] border p-6 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_-32px_rgba(7,26,70,.3)] sm:p-7 ${plan.accent === 'navy' ? 'border-[#071A46] bg-[#071A46] text-white' : plan.accent === 'orange' ? 'border-orange-200 bg-[#fffaf5] text-[#071A46]' : plan.accent === 'blue' ? 'border-blue-200 bg-[#f5f9ff] text-[#071A46]' : 'border-slate-200 bg-white text-[#071A46]'}`}>
+  const featured = plan.accent === 'navy'
+  const exploreMessage = whatsapp(`Hi Pages Pilot Digital! I'd like to explore the ${plan.name} ${isCampaign ? 'custom campaign' : 'content plan'}. Please share more details.`)
+  const startMessage = whatsapp(`Hi Pages Pilot Digital! I'd like to get started with the ${plan.name} ${isCampaign ? 'custom campaign' : 'content plan'}.`)
+  return <article className={`group relative flex flex-col overflow-hidden rounded-[1.6rem] border p-6 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_-32px_rgba(7,26,70,.3)] sm:p-7 ${featured ? 'border-[#071A46] bg-[#071A46] text-white' : plan.accent === 'orange' ? 'border-orange-200 bg-[#fffaf5] text-[#071A46]' : plan.accent === 'blue' ? 'border-blue-200 bg-[#f5f9ff] text-[#071A46]' : 'border-slate-200 bg-white text-[#071A46]'}`}>
     <div className="flex items-center justify-between">
-      <span className={`text-xs font-bold tracking-[.16em] ${plan.accent === 'navy' ? 'text-orange-300' : 'text-slate-400'}`}>PLAN {plan.id}</span>
-      {isCampaign && <span className="rounded-full bg-orange-100 px-3 py-1 text-[10px] font-bold uppercase tracking-[.1em] text-orange-700">Custom campaign</span>}
-      {!isCampaign && plan.accent === 'navy' && <span className="rounded-full bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[.1em] text-orange-200">Creative partner</span>}
+      <span className={`text-xs font-bold tracking-[.16em] ${featured ? 'text-orange-300' : 'text-slate-400'}`}>PLAN {plan.id}</span>
+      {isCampaign && <span className="rounded-full bg-orange-100 px-3 py-1 text-[10px] font-bold uppercase tracking-[.1em] text-orange-700">Custom Campaign</span>}
+      {!isCampaign && featured && <span className="rounded-full bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[.1em] text-orange-200">Creative partner</span>}
     </div>
     <h3 className="mt-5 font-display text-2xl font-semibold tracking-tight">{plan.name}</h3>
-    <p className={`mt-1 text-sm ${plan.accent === 'navy' ? 'text-blue-100/65' : 'text-slate-500'}`}>{plan.note}</p>
-    <div className={`my-6 rounded-2xl p-5 ${plan.accent === 'navy' ? 'bg-white/7' : 'bg-white/75'}`}>
-      {isCampaign ? <><p className="font-display text-2xl font-semibold leading-tight">Campaign<br />content</p><p className="mt-2 text-xs font-semibold uppercase tracking-[.14em] text-orange-600">Built around your goals</p></> : <>
-        <div className="flex items-end gap-2"><span className={`font-display text-6xl font-bold leading-none tracking-[-.07em] ${plan.accent === 'orange' ? 'text-orange-500' : plan.accent === 'navy' ? 'text-orange-300' : 'text-[#123C83]'}`}>{plan.total}</span><span className="pb-1 text-[11px] font-bold uppercase tracking-[.14em]">contents</span></div>
-        <p className={`mt-4 border-t pt-3 text-xs font-semibold uppercase tracking-[.1em] ${plan.accent === 'navy' ? 'border-white/15 text-blue-100' : 'border-slate-200 text-slate-600'}`}>{plan.reels} <span className="px-1 text-orange-500">+</span> {plan.posts}</p>
+    <p className={`mt-1 min-h-10 text-sm leading-5 ${featured ? 'text-blue-100/70' : 'text-slate-500'}`}>{plan.note}</p>
+    <div className={`my-6 rounded-2xl p-5 ${featured ? 'bg-white/[.08]' : 'bg-white/75'}`}>
+      {isCampaign ? <><p className="font-display text-2xl font-semibold leading-tight">Custom<br />Campaign</p><p className="mt-2 text-xs font-semibold uppercase tracking-[.14em] text-orange-600">Built around your goals</p></> : <>
+        <div className="flex items-end gap-2"><span className={`font-display text-6xl font-bold leading-none tracking-[-.07em] ${plan.accent === 'orange' ? 'text-orange-500' : featured ? 'text-orange-300' : 'text-[#123C83]'}`}>{plan.total}</span><span className="pb-1 text-[11px] font-bold uppercase tracking-[.14em]">contents</span></div>
+        <div className={`mt-4 grid grid-cols-2 gap-2 border-t pt-3 ${featured ? 'border-white/15' : 'border-slate-200'}`}>
+          <span className={`inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[.08em] ${featured ? 'text-blue-100' : 'text-slate-600'}`}><Film className="size-3.5 text-orange-500" /> {plan.reels} Reels</span>
+          <span className={`inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[.08em] ${featured ? 'text-blue-100' : 'text-slate-600'}`}><Camera className="size-3.5 text-orange-500" /> {plan.posts} Posts</span>
+        </div>
       </>}
     </div>
     <ul className="flex flex-1 flex-col gap-3">
-      {plan.desc.map((item) => <li key={item} className={`flex items-start gap-2.5 text-sm ${plan.accent === 'navy' ? 'text-blue-50/85' : 'text-slate-600'}`}><Check className="mt-0.5 size-4 shrink-0 text-orange-500" strokeWidth={2.5} />{item}</li>)}
+      {plan.desc.map((item) => <li key={item} className={`flex items-start gap-2.5 text-sm ${featured ? 'text-blue-50/85' : 'text-slate-600'}`}><Check className="mt-0.5 size-4 shrink-0 text-orange-500" strokeWidth={2.5} />{item}</li>)}
     </ul>
-    <a href={whatsapp(`Hi Pages Pilot Digital! I'm interested in the ${plan.name}. Please share more details.`)} target="_blank" rel="noreferrer" className={`mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold transition hover:gap-3 ${plan.accent === 'navy' ? 'bg-orange-500 text-white hover:bg-orange-400' : 'bg-[#071A46] text-white hover:bg-[#123C83]'}`}>
-      Choose this plan <ArrowUpRight className="size-4" />
-    </a>
+    <div className="mt-7 grid gap-2">
+      <a href={exploreMessage} target="_blank" rel="noopener noreferrer" className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border px-4 text-sm font-semibold transition-colors ${featured ? 'border-white/20 text-white hover:bg-white/10' : 'border-[#071A46]/15 text-[#071A46] hover:border-orange-400 hover:bg-orange-50'}`}>
+        Explore Plan <ArrowUpRight className="size-4" />
+      </a>
+      <a href={startMessage} target="_blank" rel="noopener noreferrer" className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold transition-colors ${featured ? 'bg-orange-500 text-white hover:bg-orange-400' : 'bg-[#071A46] text-white hover:bg-[#123C83]'}`}>
+        <MessageCircle className="size-4" /> Get Started
+      </a>
+    </div>
   </article>
 }
 
@@ -152,9 +163,9 @@ export function MarketingLanding() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{services.map(({icon:Icon,title,text},i)=><article key={title} className="group rounded-[1.4rem] border border-slate-200/80 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-[0_20px_55px_-35px_rgba(7,26,70,.4)] sm:p-7"><span className={`mb-6 flex size-12 items-center justify-center rounded-2xl ${i%2===0?'bg-orange-50 text-orange-600':'bg-blue-50 text-[#123C83]'} transition duration-300 group-hover:rotate-[-5deg] group-hover:scale-105`}><Icon className="size-5" /></span><h3 className="font-display text-xl font-semibold tracking-tight">{title}</h3><p className="mt-2 text-sm leading-6 text-slate-500">{text}</p><span className="mt-6 flex items-center gap-1 text-xs font-bold text-[#123C83]">Explore service <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" /></span></article>)}</div>
     </div></section>
 
-    <section id="plans" className="scroll-mt-20 bg-[#f5f8fd] px-5 py-20 sm:px-8 sm:py-28 lg:px-12"><div className="mx-auto max-w-7xl"><SectionTitle kicker="Choose your content plan" title={<>Consistent content.<br className="hidden sm:block" /> Stronger digital presence.</>} intro="Clear content plans built around the way your business wants to show up." />
+    <section id="plans" className="scroll-mt-20 bg-[#f5f8fd] px-5 py-20 sm:px-8 sm:py-28 lg:px-12"><div className="mx-auto max-w-7xl"><SectionTitle kicker="Content made with intention" title="Our Creative Content Plans" intro="Creative ideas. Consistent content. Stronger brands." />
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{plans.map((plan)=><PlanCard key={plan.id} plan={plan} />)}</div>
-      <p className="mt-7 text-center text-xs text-slate-500">Every plan is a content program, built to make your brand more consistent and recognizable.</p>
+      <p className="mt-7 text-center text-xs text-slate-500">Every plan is a creative content program, built to make your brand more consistent and recognizable.</p>
     </div></section>
 
     <section id="ads" className="scroll-mt-20 bg-[#071A46] px-5 py-20 text-white sm:px-8 sm:py-28 lg:px-12"><div className="mx-auto max-w-7xl"><SectionTitle kicker="Advertisement creation services" title={<>Big ideas, built<br className="hidden sm:block" /> for the scroll.</>} intro="High-quality creative ads that convert attention into customers." light />
