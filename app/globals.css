@@ -62,26 +62,26 @@
   color-scheme: light;
   --radius: 0.75rem;
 
-  --background: oklch(0.982 0.007 85);
-  --foreground: oklch(0.2 0.035 272);
+  --background: #ffffff;
+  --foreground: #071d49;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.2 0.035 272);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.2 0.035 272);
-  --primary: oklch(0.5 0.23 274);
+  --primary: #071d49;
   --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.95 0.012 85);
   --secondary-foreground: oklch(0.2 0.035 272);
   --muted: oklch(0.955 0.01 85);
   --muted-foreground: oklch(0.46 0.025 272);
-  --accent: oklch(0.9 0.19 122);
+  --accent: #f4510b;
   --accent-foreground: oklch(0.2 0.035 272);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.9 0.012 85);
   --input: oklch(0.88 0.012 85);
   --ring: oklch(0.5 0.23 274);
 
-  --ink: oklch(0.2 0.035 272);
+  --ink: #071d49;
   --ink-foreground: oklch(0.97 0.008 85);
   --whatsapp: oklch(0.72 0.19 150);
   --whatsapp-foreground: oklch(0.18 0.04 160);
