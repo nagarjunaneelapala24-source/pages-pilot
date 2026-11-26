@@ -1,65 +1,38 @@
 import { ArrowUpRight, Phone } from 'lucide-react'
-import { contacts, formatPhone, generalMessage, telUrl, whatsappUrl } from '@/lib/site-config'
-import { ContactForm } from './contact-form'
-import { Reveal } from './reveal'
+import { PlatformIcon } from './platform-icon'
+import { contacts, formatPhone, socialLinks, telUrl, whatsappUrl } from '@/lib/site-config'
 import { SectionHeading } from './section-heading'
 import { WhatsAppIcon } from './whatsapp-icon'
 
 export function Contact() {
   return (
-    <section id="contact" className="relative overflow-hidden bg-muted/60 py-24 sm:py-32">
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-        <div>
-          <SectionHeading
-            index="05"
-            eyebrow="Contact"
-            title={
-              <>
-                {"Let's get your brand"} <span className="text-primary">off the ground.</span>
-              </>
-            }
-            description="Message us on any of our WhatsApp lines — we usually reply within working hours. Prefer a call? Tap the phone icon."
-          />
-
-          <ul className="mt-10 flex flex-col gap-3">
-            {contacts.map((contact, i) => (
-              <Reveal as="li" key={contact.id} delay={i * 80}>
-                <div className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-3 pr-3.5 transition-all duration-300 hover:border-whatsapp/60 hover:shadow-[0_16px_40px_-20px] hover:shadow-whatsapp/50">
-                  <a
-                    href={whatsappUrl(contact.number, generalMessage)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex min-w-0 flex-1 items-center gap-3 rounded-xl outline-none focus-visible:ring-3 focus-visible:ring-whatsapp/30"
-                  >
-                    <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-whatsapp text-whatsapp-foreground transition-transform duration-300 group-hover:scale-105">
-                      <WhatsAppIcon className="size-5" />
-                    </span>
-                    <span className="flex min-w-0 flex-col">
-                      <span className="text-xs text-muted-foreground">{contact.label}</span>
-                      <span className="font-display text-lg font-semibold tabular-nums">{formatPhone(contact.number)}</span>
-                    </span>
-                    <span className="ml-auto hidden items-center gap-1 text-sm font-semibold sm:flex">
-                      WhatsApp
-                      <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </span>
-                    <span className="sr-only">Chat on WhatsApp with {formatPhone(contact.number)}</span>
-                  </a>
-                  <a
-                    href={telUrl(contact.number)}
-                    className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-border text-foreground transition-colors outline-none hover:bg-ink hover:text-ink-foreground focus-visible:ring-3 focus-visible:ring-ring/40"
-                  >
-                    <Phone className="size-4" />
-                    <span className="sr-only">Call {formatPhone(contact.number)}</span>
-                  </a>
-                </div>
-              </Reveal>
-            ))}
-          </ul>
+    <section id="contact" className="bg-[#071D49] py-20 text-white sm:py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <div>
+            <SectionHeading index="03" eyebrow="Let’s get started" inverted title={<>Your next move <span className="text-[#F4510B]">starts here.</span></>} description="Reach out to Pages Pilot Digital and let us know what you have in mind." />
+            <a href={whatsappUrl('7675807726', "Hi Pages Pilot Digital! I'd like to get started.")} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex min-h-14 items-center justify-center gap-2 rounded-xl bg-[#F4510B] px-6 py-4 text-sm font-extrabold text-[#071D49] transition hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4510B]">DM us to get started <ArrowUpRight className="size-4" /></a>
+          </div>
+          <div className="grid gap-7 rounded-3xl border border-white/10 bg-white/[0.04] p-6 sm:grid-cols-2 sm:p-8">
+            <div>
+              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-white/55">Call</h3>
+              <ul className="mt-4 flex flex-col gap-3">
+                {contacts.filter((contact) => contact.id.startsWith('call')).map((contact) => <li key={contact.id}><a href={telUrl(contact.number)} className="inline-flex items-center gap-3 text-lg font-semibold tabular-nums text-white transition hover:text-[#F4510B]"><Phone className="size-4 text-[#F4510B]" />{formatPhone(contact.number)}</a></li>)}
+              </ul>
+              <h3 className="mt-7 text-xs font-bold uppercase tracking-[0.2em] text-white/55">WhatsApp</h3>
+              <a href={whatsappUrl('7675807726', "Hi Pages Pilot Digital! I'd like to get started.")} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-3 text-lg font-semibold tabular-nums text-white transition hover:text-[#F4510B]"><WhatsAppIcon className="size-5 text-[#F4510B]" />{formatPhone('7675807726')}</a>
+            </div>
+            <div>
+              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-white/55">Follow along</h3>
+              <ul className="mt-4 flex flex-col gap-4">
+                {socialLinks.map((social) => {
+                  return <li key={social.label}><a href={social.href} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-3 text-white transition hover:text-[#F4510B]"><span className="flex size-10 items-center justify-center rounded-xl bg-white/10 text-[#F4510B] transition group-hover:bg-[#F4510B] group-hover:text-[#071D49]"><PlatformIcon platform={social.label as 'YouTube' | 'Facebook' | 'Instagram'} className="size-5" /></span><span><span className="block text-sm font-semibold">{social.label}</span><span className="text-xs text-white/55">{social.handle}</span></span><ArrowUpRight className="ml-1 size-4 opacity-50" /></a></li>
+                })}
+              </ul>
+            </div>
+          </div>
         </div>
-
-        <Reveal delay={120}>
-          <ContactForm />
-        </Reveal>
+        <div className="mt-16 border-t border-white/10 pt-6 text-xs text-white/50">© {new Date().getFullYear()} Pages Pilot Digital. All rights reserved.</div>
       </div>
     </section>
   )

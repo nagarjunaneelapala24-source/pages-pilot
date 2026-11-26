@@ -1,79 +1,44 @@
-import { ArrowDown, ArrowUpRight } from 'lucide-react'
-import { site } from '@/lib/site-config'
-import { HeroVisual } from './hero-visual'
-import { EnquiryButton } from './enquiry-button'
-import { WhatsAppIcon } from './whatsapp-icon'
-
-const facts = [
-  { value: '16', label: 'posts / month', prefix: 'Up to' },
-  { value: '12', label: 'reels / month', prefix: 'Up to' },
-  { value: '3', label: 'platforms', prefix: 'Up to' },
-]
+import { ArrowDown, ArrowUpRight, Play, Sparkles } from 'lucide-react'
+import { PlatformIcon } from './platform-icon'
+import { site, whatsappUrl } from '@/lib/site-config'
+import { Logo } from './logo'
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-28 pb-16 sm:pt-36 lg:pb-24">
-      <div aria-hidden="true" className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,black,transparent)]" />
-      <div aria-hidden="true" className="absolute top-24 -right-40 size-[36rem] rounded-full bg-primary/10 blur-3xl" />
-      <div aria-hidden="true" className="absolute top-80 -left-40 size-[28rem] rounded-full bg-accent/25 blur-3xl" />
-
-      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-5 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
+    <section id="top" className="relative isolate overflow-hidden bg-white pt-32 pb-20 sm:pt-40 sm:pb-28">
+      <div aria-hidden="true" className="absolute -right-36 -top-20 size-[36rem] rounded-full bg-[#F4510B]/[0.07] blur-3xl" />
+      <div aria-hidden="true" className="absolute -left-44 bottom-0 size-[30rem] rounded-full bg-[#071D49]/[0.045] blur-3xl" />
+      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
         <div className="flex flex-col items-start">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/80 py-1 pr-3 pl-1 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur animate-in fade-in-0 slide-in-from-bottom-2 duration-700">
-            <span className="rounded-full bg-accent px-2 py-0.5 font-semibold text-accent-foreground">New</span>
-            Social media management · from ₹2,999/mo
-          </span>
-
-          <h1 className="mt-7 font-display text-[clamp(3.25rem,9vw,6.5rem)] leading-[0.88] font-extrabold tracking-[-0.045em]">
-            <span className="block animate-in fade-in-0 slide-in-from-bottom-4 duration-700 fill-mode-both">
-              {site.tagline[0]}
-            </span>
-            <span className="relative block w-fit animate-in fade-in-0 slide-in-from-bottom-4 delay-150 duration-700 fill-mode-both">
-              <span className="relative z-10">{site.tagline[1]}</span>
-              <span aria-hidden="true" className="absolute inset-x-[-0.08em] bottom-[0.08em] z-0 h-[0.32em] -rotate-1 rounded-sm bg-accent" />
-            </span>
-            <span className="flex items-center gap-3 text-primary animate-in fade-in-0 slide-in-from-bottom-4 delay-300 duration-700 fill-mode-both">
-              {site.tagline[2]}
-              <span aria-hidden="true" className="flex size-[0.62em] items-center justify-center rounded-full bg-primary text-primary-foreground">
-                <ArrowUpRight className="size-[0.42em]" strokeWidth={2.5} />
-              </span>
-            </span>
+          <Logo />
+          <span className="mt-9 inline-flex items-center gap-2 rounded-full border border-[#071D49]/10 bg-white px-4 py-2 text-xs font-semibold tracking-wide text-[#071D49] shadow-sm"><Sparkles className="size-4 text-[#F4510B]" />Social media, piloted with purpose</span>
+          <p className="mt-9 text-sm font-bold uppercase tracking-[0.18em] text-[#F4510B]">{site.tagline}</p>
+          <h1 className="mt-4 max-w-3xl font-display text-[clamp(3.2rem,8vw,6.25rem)] font-extrabold leading-[0.95] tracking-[-0.055em] text-[#071D49]">
+            OUR MONTHLY <span className="text-[#F4510B]">PACKAGES</span>
           </h1>
-
-          <p className="mt-7 max-w-md text-lg leading-relaxed text-muted-foreground animate-in fade-in-0 delay-500 duration-700 fill-mode-both">
-            {site.description}
-          </p>
-
-          <div className="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row animate-in fade-in-0 slide-in-from-bottom-2 delay-700 duration-700 fill-mode-both">
-            <a
-              href="#pricing"
-              className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-ink px-6 py-4 text-sm font-semibold text-ink-foreground shadow-[0_14px_30px_-14px] shadow-ink/60 transition-all outline-none hover:-translate-y-0.5 hover:bg-primary hover:shadow-primary/60 focus-visible:ring-3 focus-visible:ring-ring/40 active:translate-y-0"
-            >
-              View packages
-              <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" />
-            </a>
-            <EnquiryButton
-              className="group inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-card px-6 py-4 text-sm font-semibold text-foreground transition-all outline-none hover:-translate-y-0.5 hover:border-whatsapp hover:shadow-[0_14px_30px_-16px] hover:shadow-whatsapp/60 focus-visible:ring-3 focus-visible:ring-whatsapp/30"
-            >
-              <WhatsAppIcon className="size-4 text-whatsapp" />
-              Chat on WhatsApp
-            </EnquiryButton>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">Explore the monthly social media packages from Pages Pilot Digital.</p>
+          <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+            <a href="#pricing" className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-[#F4510B] px-6 py-4 text-sm font-bold text-[#071D49] shadow-lg shadow-[#F4510B]/20 transition hover:-translate-y-0.5 hover:bg-[#071D49] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Explore packages <ArrowDown className="size-4" /></a>
+            <a href={whatsappUrl('7675807726', "Hi Pages Pilot Digital! I'd like to get started.")} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl border border-[#071D49]/15 bg-white px-6 py-4 text-sm font-bold text-[#071D49] transition hover:border-[#F4510B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Get started <ArrowUpRight className="size-4" /></a>
           </div>
-
-          <dl className="mt-12 grid w-full max-w-md grid-cols-3 divide-x divide-border border-t border-border pt-6">
-            {facts.map((fact) => (
-              <div key={fact.label} className="px-4 first:pl-0">
-                <dt className="text-xs text-muted-foreground">{fact.prefix}</dt>
-                <dd className="mt-1">
-                  <span className="font-display text-3xl font-bold tracking-tight">{fact.value}</span>
-                  <span className="block text-xs text-muted-foreground">{fact.label}</span>
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <div className="mt-10 flex items-center gap-4 border-t border-slate-200 pt-6 text-sm text-slate-500"><span className="flex -space-x-2"><span className="flex size-9 items-center justify-center rounded-full border-2 border-white bg-[#071D49] text-[#F4510B]"><PlatformIcon platform="Instagram" className="size-4" /></span><span className="flex size-9 items-center justify-center rounded-full border-2 border-white bg-[#F4510B] text-[#071D49]"><Play className="size-4 fill-current" /></span></span><span>Content made for the way your brand shows up.</span></div>
         </div>
-
-        <HeroVisual />
+        <div className="relative mx-auto w-full max-w-[34rem]" aria-label="Social content creation illustration">
+          <div className="absolute -left-3 -top-10 z-10 rounded-2xl border border-slate-100 bg-white p-4 shadow-xl shadow-[#071D49]/10 sm:-left-8"><div className="flex items-center gap-3"><span className="flex size-10 items-center justify-center rounded-xl bg-[#F4510B]/10 text-[#F4510B]"><PlatformIcon platform="Instagram" className="size-5" /></span><span><span className="block text-xs font-semibold text-[#071D49]">Content, in motion</span><span className="text-[0.68rem] text-slate-500">Creative social presence</span></span></div></div>
+          <div className="relative aspect-[0.95] overflow-hidden rounded-[2.5rem] bg-[#071D49] p-6 shadow-2xl shadow-[#071D49]/20 sm:aspect-[1.12] sm:p-8">
+            <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#ffffff 0.7px, transparent 0.7px)', backgroundSize: '18px 18px' }} />
+            <div className="relative flex h-full flex-col justify-between rounded-[1.8rem] border border-white/15 bg-gradient-to-br from-white/[0.12] to-transparent p-6 sm:p-8">
+              <div className="flex items-start justify-between"><span className="rounded-full bg-white/10 px-3 py-1.5 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/80">Your digital co-pilot</span><ArrowUpRight className="size-6 text-[#F4510B]" /></div>
+              <div className="relative mx-auto flex aspect-square w-[74%] items-center justify-center rounded-[2rem] border border-white/15 bg-white/[0.06]">
+                <div className="absolute inset-4 rounded-[1.6rem] border border-dashed border-white/20" />
+                <div className="flex size-32 items-center justify-center rounded-[2rem] bg-[#F4510B] shadow-[0_0_70px_rgba(244,81,11,0.28)] sm:size-40"><svg viewBox="0 0 24 24" aria-hidden="true" className="size-16 text-[#071D49] sm:size-20" fill="none"><path d="M3 11.5 20.5 4l-5.5 16-3.2-6.3L3 11.5Z" fill="currentColor" /><path d="m11.8 13.7 3.5-3.5" stroke="white" strokeWidth="1.6" strokeLinecap="round" /></svg></div>
+                <span className="absolute -right-5 top-8 flex size-12 items-center justify-center rounded-2xl bg-white text-[#F4510B] shadow-xl"><Play className="size-5 fill-current" /></span><span className="absolute -bottom-4 left-6 flex size-11 items-center justify-center rounded-2xl bg-[#F4510B] text-[#071D49] shadow-xl"><Sparkles className="size-5" /></span>
+              </div>
+              <div className="flex items-end justify-between"><div><p className="text-xs font-medium text-white/50">PAGES PILOT</p><p className="mt-1 font-display text-2xl font-bold text-white">Create. Connect.</p></div><span className="text-sm font-semibold text-[#F4510B]">Grow <ArrowUpRight className="inline size-4" /></span></div>
+            </div>
+          </div>
+          <div aria-hidden="true" className="absolute -bottom-5 -right-3 -z-10 size-32 rounded-full border-[18px] border-[#F4510B]/10 sm:-right-9" />
+        </div>
       </div>
     </section>
   )

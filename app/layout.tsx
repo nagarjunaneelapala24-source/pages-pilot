@@ -11,14 +11,14 @@ const bricolage = Bricolage_Grotesque({
 })
 
 export const metadata: Metadata = {
-  title: 'Pages Pilot Digital — Build. Engage. Grow.',
+  title: 'Pages Pilot Digital — We pilot your digital presence',
   description:
-    'Pages Pilot Digital is a social media marketing agency. Monthly posts, reels, stories, content strategy and performance reporting — plans from ₹2,999/month.',
+    'Explore Pages Pilot Digital’s monthly social media packages for creative content, page handling and campaign management. Get in touch on WhatsApp, phone or social media.',
   generator: 'v0.app',
   openGraph: {
-    title: 'Pages Pilot Digital — Build. Engage. Grow.',
+    title: 'Pages Pilot Digital — We pilot your digital presence',
     description:
-      'Monthly social media management packages: Starter, Growth and Premium Presence. Enquire on WhatsApp.',
+      'Explore the Pages Pilot Digital monthly social media packages and connect with us through WhatsApp, phone or social media.',
     type: 'website',
   },
   icons: {
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: 'light',
-  themeColor: '#f9f7f2',
+  themeColor: '#071D49',
   width: 'device-width',
   initialScale: 1,
 }

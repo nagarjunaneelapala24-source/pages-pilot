@@ -39,7 +39,7 @@ export function SectionHeading({
         <span aria-hidden="true" className={cn('h-px w-8', inverted ? 'bg-accent/50' : 'bg-primary/40')} />
         {eyebrow}
       </span>
-      <h2 className="max-w-2xl font-display text-4xl leading-[1.02] font-bold tracking-[-0.03em] sm:text-5xl">
+      <h2 className={cn('max-w-2xl font-display text-4xl leading-[1.02] font-bold tracking-[-0.03em] sm:text-5xl', inverted ? 'text-white' : 'text-foreground')}>
         {title}
       </h2>
       {description ? (
